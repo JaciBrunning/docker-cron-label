@@ -8,7 +8,7 @@ Start the `jaci/cron-label` container, passing through the docker socket to allo
 
 ```sh
 # Shell
-docker run -d -v "/var/run/docker.sock:/var/run/docker.sock" jaci/cron-label:latest
+docker run -d -v "/var/run/docker.sock:/var/run/docker.sock" -v "/etc/localtime:/etc/localtime:ro" jaci/cron-label:latest
 ```
 
 ```yaml
@@ -18,6 +18,7 @@ services:
     image: jaci/cron-label:latest
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock"
+      - "/etc/localtime:/etc/localtime:ro"
 ```
 
 # Scheduling containers
